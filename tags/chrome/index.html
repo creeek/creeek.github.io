@@ -15,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Archives | Creeek · Be a coder, Be a farmer</title>
+    <title>Tag: chrome | Creeek · Be a coder, Be a farmer</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
@@ -82,7 +82,7 @@
         
     $(function() {
         // page-id...
-        var pageId = "archives/";
+        var pageId = "tags/chrome/";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
         
@@ -90,15 +90,18 @@
     });
     </script>
     
-
 <div class="container archive-body">
     <div class="row">
-        <div class="col-xs-2 well">
-            <h2 class="archive-icon">归档</h2>
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a><span class="archive-list-count">1</span></li></ul>
+        <div class="col-xs-3 well">
+            <div class="archive-title" >
+                <h2 class="tag-icon">chrome</h2>
+                <div>
+                    <a href="/tags"><< 返回标签列表</a>
+                </div>
+            </div>
         </div>
 
-        <div class="col-xs-10">
+        <div class="col-xs-9" id="tag-list-body">
             
             <article class="post">
                 <div class="jumbotron">
@@ -117,36 +120,14 @@ iOS 6 comes with built-in support for remote debugging. It plays nice with the n
                 </div>
             </article>
             
-            <article class="post">
-                <div class="jumbotron">
-                    <h1><a href="/2014/07/13/setup-rails-on-osx/" title="Setup Ruby On Rails on Mac OS X">Setup Ruby On Rails on Mac OS X</a></h1>
-
-                    
-                        <p>Overview
-We will be setting up a Ruby on Rails development environment on Mac OS X 10.10 Yosemite.
-Installing Homebrew
-First, we need to ins</p>
-                    
-
-                    <p class="say-title">
-                        —— <img src="/images/avatar.png" class="img-circle index-post-avatar" />
-                        <a href="http://creeek.github.io" target="_blank" title="Creeek">Creeek</a>
-                        于2014年07月13日以 <a class="article-tag-link" href="/tags/OSX/">OSX</a>, <a class="article-tag-link" href="/tags/Ruby-on-Rails/">Ruby on Rails</a> 叨叨
-                    </p>
-                </div>
-            </article>
-            
 
             
         </div>
     </div>
-</div>
 
-<script>
-$(function() {
-    $(".archive-list-count").addClass("badge");
-});
-</script>
+    <div class="col-xs-19 all-list-box">
+    </div>
+</div>
 
     <footer id="footer">
         <div id="bottom-tip">
