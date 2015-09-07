@@ -109,15 +109,33 @@ By <a href="http://creeek.github.io" title="Creeek">Creeek</a>
             </div>
             
             <h2 id="Overview">Overview</h2>
-<p>iOS 6 comes with built-in support for remote debugging. It plays nice with the new Safari Web Inspector. But developers love Chrome DevTools more, Can we make a proxy from this mysterious transport layer to HTTP to make it work with Chrome DevTools? Yes, The <a href="https://github.com/google/ios-webkit-debug-proxy/" target="_blank" rel="external">iOS WebKit Debug Proxy</a> project enables this.</p>
+<p>iOS 6 comes with built-in support for remote debugging. It plays nice with the new Safari Web Inspector. But developers love Chrome DevTools more, Can we make a proxy from this mysterious transport layer to HTTP to make it work with Chrome DevTools? Yes, The [iOS WebKit Debug Proxy][1] project enables this.</p>
 <h2 id="Installing_iOS_WebKit_Debug_Proxy">Installing iOS WebKit Debug Proxy</h2>
-<p>On a Mac, it’s easiest to use brew:<br>``` bash<br>brew install ios-webkit-debug-proxy<br>```</p>
+<p>On a Mac, it’s easiest to use brew:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install ios-webkit-debug-proxy</div></pre></td></tr></table></figure>
+
 <h2 id="Usage">Usage</h2>
-<p>To start the proxy, run:<br>```bash<br>ios_webkit_debug_proxy<br>```<br>Press Ctrl-C to quit. The proxy can be left running as a background process. Add “-d” for verbose output. Run with “—help” for more options.</p>
+<p>To start the proxy, run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ios_webkit_debug_proxy</div></pre></td></tr></table></figure>
+
+<p>Press Ctrl-C to quit. The proxy can be left running as a background process. Add “-d” for verbose output. Run with “—help” for more options.</p>
 <h2 id="Configuration">Configuration</h2>
-<p>The device_id-to-port assignment defaults to:<br>```bash<br>:9221 for the device list<br>:9222 for the first iOS device that is attached<br>:9223 for the second iOS device that is attached<br>…<br>:9322 for the max device<br>```</p>
+<p>The device_id-to-port assignment defaults to:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">:<span class="number">9221</span> -&gt; the device list</div><div class="line">:<span class="number">9222</span> -&gt; the first iOS device that is attached</div><div class="line">:<span class="number">9223</span> -&gt; the second iOS device that is attached</div><div class="line">...</div><div class="line">:<span class="number">9322</span> -&gt; the max device</div></pre></td></tr></table></figure>
+
 <h3 id="Specifying_the_DevTools_UI_URL">Specifying the DevTools UI URL</h3>
-<p>By default, the DevTools UI “frontend” HTML, JS, and image files are proxied from:<br>```bash<br><a href="http://chrome-devtools-frontend.appspot.com/static/18.0.1025.74/devtools.html" target="_blank" rel="external">http://chrome-devtools-frontend.appspot.com/static/18.0.1025.74/devtools.html</a><br>```<br>You can use the <code>-f</code> argument to specify different source, e.g. a local<br><a href="">WebKit checkout</a>(<a href="https://chromium.googlesource.com/chromium/blink.git/+/master/Source/devtools/" target="_blank" rel="external">https://chromium.googlesource.com/chromium/blink.git/+/master/Source/devtools/</a>):<br>```bash<br>ios_webkit_debug_proxy -f /usr/local/WebCore/inspector/front-end/inspector.html<br>```<br>or a remote server:<br>```bash<br>ios_webkit_debug_proxy -f <a href="http://foo.com:1234/bar/inspector.html" target="_blank" rel="external">http://foo.com:1234/bar/inspector.html</a><br>```<br>Or, instead of using the proxied DevTools UI files, you can use Chrome’s local<br>“chrome-devtools:” resource files if you know the device port and page number,<br>e.g.:<br>```bash<br>chrome-devtools://devtools/bundled/devtools.html?host=localhost:9222&amp;page=1<br>```</p>
+<p>By default, the DevTools UI “frontend” HTML, JS, and image files are proxied from:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://chrome-devtools-frontend.appspot.com/static/<span class="number">18.0</span>.<span class="number">1025.74</span>/devtools.html</div></pre></td></tr></table></figure>
+
+<p>You can use the <code>-f</code> argument to specify different source, e.g. a local<br><a href="https://chromium.googlesource.com/chromium/blink.git/+/master/Source/devtools/" target="_blank" rel="external">WebKit checkout</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ios_webkit_debug_proxy <span class="operator">-f</span> /usr/local/WebCore/inspector/front-end/inspector.html</div></pre></td></tr></table></figure>
+
+<p>or a remote server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ios_webkit_debug_proxy <span class="operator">-f</span> http://foo.com:<span class="number">1234</span>/bar/inspector.html</div></pre></td></tr></table></figure>
+
+<p>Or, instead of using the proxied DevTools UI files, you can use Chrome’s local<br>“chrome-devtools:” resource files if you know the device port and page number,<br>e.g.:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chrome-devtools://devtools/bundled/devtools.html?host=localhost:<span class="number">9222</span>&page=<span class="number">1</span></div></pre></td></tr></table></figure>
+
 
             
             <section class="comment">
